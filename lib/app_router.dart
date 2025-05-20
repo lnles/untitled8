@@ -40,7 +40,6 @@ class AppRouter extends RootStackRouter {
       //   // automatically removed from the stack when the resolver is completed
       //   resolver.redirectUntil(LoginRoute(onResult: (didLogin) => resolver.next(didLogin)));
       // }
-    },
-    ),
+    }),
   ];
 }

@@ -1,21 +1,32 @@
+import 'dart:developer';
+
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:untitled8/app_router.dart';
 
-void main() async{
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // FlutterError.onError = (details) {
+  //   FlutterError.presentError(details);
+  //   log(
+  //     details.exception.toString(),
+  //     stackTrace: details.stack,
+  //     name: 'flutter_error',
+  //   );
+  // };
+  // PlatformDispatcher.instance.onError = (error, stack) {
+  //   log(error.toString(), stackTrace: stack, name: 'platform_error');
+  //   return true;
+  // };
   setup();
   runApp(MyApp());
 }
 
-GetIt sl=GetIt.instance;
+GetIt sl = GetIt.instance;
 
 void setup() async {
-  // GetIt sl=GetIt.instance;
-  if (kDebugMode) {
-    print('Setting up dependencies...');
-  }
   // make sure you register it as a Singleton or a lazySingleton
   sl.registerSingleton<AppRouter>(AppRouter());
 }
@@ -39,7 +50,15 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       // Set the initial route to the home page.
       routerConfig: sl.get<AppRouter>().config(),
+      builder: (context, widget) {
+        Widget error = const Text('...rendering error...');
+        if (widget is Scaffold || widget is Navigator) {
+          error = Scaffold(body: Center(child: error));
+        }
+        ErrorWidget.builder = (errorDetails) => error;
+        if (widget != null) return widget;
+        throw StateError('widget is null');
+      },
     );
   }
 }
-

@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:untitled8/app_router.gr.dart';
 
 @RoutePage()
-class UserScreen extends HookWidget {
-  const UserScreen({super.key});
+class TestView extends HookWidget {
+  const TestView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +14,7 @@ class UserScreen extends HookWidget {
     void incrementCounter() => counter.value++;
     void toDetail () {
       incrementCounter();
-      context.router.push(TestView());
+      context.router.pushPath('/error');
     }
     return Scaffold(
       appBar: AppBar(

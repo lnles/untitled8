@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:flex_color_scheme/flex_color_scheme.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:untitled8/app_router.dart';

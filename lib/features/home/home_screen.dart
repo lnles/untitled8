@@ -53,6 +53,7 @@ class HomeScreen extends HookWidget {
               onPressed: toDetail,
               icon: Icon(Ionicons.home),
               label: Text('Go to Detail Screen'),
+              clipBehavior: Clip.antiAlias,
             )
           ],
         ),

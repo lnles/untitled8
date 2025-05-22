@@ -1,8 +1,8 @@
+import 'package:asuka/asuka.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:slide_countdown/slide_countdown.dart';
 import 'package:untitled8/app_router.gr.dart';
 
 @RoutePage()
@@ -33,12 +33,22 @@ class HomeScreen extends HookWidget {
               '${counter.value}',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            SlideCountdown(
-              duration: Duration(days: 2),
-            ),
-            SlideCountdownSeparated(
-              duration: Duration(days: 2),
-            ),
+            ElevatedButton(onPressed: (){
+              // Asuka.showSnackBar(SnackBar(
+              //   content: Text("Hello World"),
+              // ));
+              Asuka.showCupertinoDialog(builder:(context) {
+                return SizedBox(
+                  height: 200,
+                  child: Center(
+                    child: Text("Hello World"),
+                  ),
+                );
+              });
+              AsukaMaterialBanner.alert('Hello World').show();
+
+              // AsukaSnackbar.success("success").show();
+            }, child: Text('show snackbar')),
             TextButton.icon(
               onPressed: toDetail,
               icon: Icon(Ionicons.home),

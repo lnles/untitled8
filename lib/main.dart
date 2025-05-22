@@ -1,3 +1,4 @@
+import 'package:asuka/asuka.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -47,15 +48,16 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       // Set the initial route to the home page.
       routerConfig: sl.get<AppRouter>().config(),
-      builder: (context, widget) {
-        Widget error = const Text('...rendering error...');
-        if (widget is Scaffold || widget is Navigator) {
-          error = Scaffold(body: Center(child: error));
-        }
-        ErrorWidget.builder = (errorDetails) => error;
-        if (widget != null) return widget;
-        throw StateError('widget is null');
-      },
+      // builder: (context, widget) {
+      //   Widget error = const Text('...rendering error...');
+      //   if (widget is Scaffold || widget is Navigator) {
+      //     error = Scaffold(body: Center(child: error));
+      //   }
+      //   ErrorWidget.builder = (errorDetails) => error;
+      //   if (widget != null) return widget;
+      //   throw StateError('widget is null');
+      // },
+      builder: Asuka.builder,
     );
   }
 }

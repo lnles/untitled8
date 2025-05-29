@@ -1,6 +1,7 @@
 import 'package:asuka/asuka.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsl/flutter_dsl.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:untitled8/app_router.gr.dart';
@@ -40,9 +41,7 @@ class HomeScreen extends HookWidget {
               Asuka.showCupertinoDialog(builder:(context) {
                 return SizedBox(
                   height: 200,
-                  child: Center(
-                    child: Text("Hello World"),
-                  ),
+                  child: 'Hello World'.text().center(),
                 );
               });
               AsukaMaterialBanner.alert('Hello World').show();
